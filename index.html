@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <meta name="theme-color" content="#101a19" />
+  <title>DEAD CITY — Outbreak Survival</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <div id="viewport" aria-label="Permainan Dead City">
+      <canvas id="game"></canvas>
+      <div class="vignette"></div>
+      <div class="scanlines"></div>
+
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">D</span><div><b>DEAD CITY</b><small>OUTBREAK SURVIVAL</small></div></div>
+        <div class="mission-tag"><i></i> ZONA TERKONTAMINASI <span>•</span> JAKARTA SEKTOR 07</div>
+        <button id="pause-btn" class="icon-btn" aria-label="Jeda permainan"><span>Ⅱ</span></button>
+      </header>
+
+      <section class="hud-left">
+        <div class="stat-card health-card"><div class="stat-label"><span>KESEHATAN</span><b id="health-value">100</b></div><div class="meter"><i id="health-bar"></i></div></div>
+        <div class="stat-card"><div class="stat-label"><span>AMUNISI</span><b><span id="ammo-value">24</span><small> / ∞</small></b></div><div class="ammo-pips" id="ammo-pips"></div></div>
+      </section>
+
+      <section class="hud-right">
+        <div class="wave-card"><small>WAVE</small><b id="wave-value">01</b><span class="wave-line"></span><div><strong id="kill-value">00</strong><small>ELIMINASI</small></div></div>
+        <div class="objective"><span class="objective-icon">⌖</span><div><small>MISI UTAMA</small><b id="objective-text">KUMPULKAN PERBEKALAN</b><span id="objective-sub">Kotak suplai 0 / 3</span></div></div>
+        <div class="compass"><span>N</span><i></i><b>SEKTOR 07</b></div>
+      </section>
+
+      <div id="toast" class="toast"></div>
+      <div id="hit-flash" class="hit-flash"></div>
+
+      <div class="controls-hint"><span class="keycap">WASD</span> GERAK <span class="dot">·</span> <span class="keycap">SPACE</span> TEMBAK <span class="dot">·</span> OTOMATIS MENYERANG ZOMBIE TERDEKAT</div>
+
+      <div class="touch-controls" id="touch-controls">
+        <div id="joystick" class="joystick"><div class="joy-ring"><span class="joy-cross x"></span><span class="joy-cross y"></span><div id="joy-knob" class="joy-knob"></div></div><small>GERAK</small></div>
+        <div class="touch-actions"><button id="fire-touch" class="fire-button"><span>✦</span><b>TEMBAK</b></button><button id="run-touch" class="run-button"><span>»</span><b>LARI</b></button></div>
+      </div>
+
+      <div id="start-screen" class="screen visible">
+        <div class="screen-backdrop"></div>
+        <div class="start-content">
+          <div class="eyebrow"><span class="pulse-dot"></span> SIARAN DARURAT // 07:42 AM</div>
+          <h1>KOTA INI<br><em>SUDAH MATI.</em></h1>
+          <p>Jakarta jatuh dalam semalam. Jalanan dipenuhi mayat hidup.<br>Ambil suplai, bertahan, dan capai titik ekstraksi.</p>
+          <div class="briefing"><div><span>01</span><b>AMBIL 3 KOTAK SUPLAI</b></div><div><span>02</span><b>HINDARI KEPUNGAN</b></div><div><span>03</span><b>BERTAHAN HIDUP</b></div></div>
+          <button id="start-btn" class="primary-btn"><span>MULAI BERTAHAN</span><b>→</b></button>
+          <small class="control-note">JOYSTICK + TOMBOL LAYAR / WASD + SPACE</small>
+        </div>
+        <div class="title-coord">-6.2088° S<br>106.8456° E</div>
+      </div>
+
+      <div id="pause-screen" class="screen"><div class="modal-card"><span class="eyebrow">SEKTOR 07 // JEDA</span><h2>BERHENTI<br><em>SEJENAK.</em></h2><p>Para terinfeksi belum berhenti berburu.</p><button id="resume-btn" class="primary-btn"><span>LANJUTKAN</span><b>→</b></button></div></div>
+      <div id="end-screen" class="screen"><div class="modal-card"><span id="end-eyebrow" class="eyebrow">MISI SELESAI</span><h2 id="end-title">KAMU<br><em>SELAMAT.</em></h2><p id="end-copy">Sektor 07 berhasil diamankan.</p><div class="result-stats"><div><b id="result-kills">0</b><small>ELIMINASI</small></div><div><b id="result-time">00:00</b><small>WAKTU BERTAHAN</small></div></div><button id="restart-btn" class="primary-btn"><span>MAIN LAGI</span><b>↻</b></button></div></div>
+
+      <div class="bottom-coord"><span>●</span> LIVE FEED <b>CAM-07</b><i></i> EAGLE VIEW</div>
+    </div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
